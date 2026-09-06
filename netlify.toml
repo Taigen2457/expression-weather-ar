@@ -1,0 +1,3 @@
+[build]
+  command = "python3 download_assets.py"
+  publish = "."

@@ -1,0 +1,15 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#090d15"><title>表情气象 · Expression Weather</title><link rel="stylesheet" href="./style.css"></head>
+<body><main><header><a class="brand" href="./"><span class="mark">✳</span><span>表情气象 <small>EXPRESSION WEATHER</small></span></a><span class="edition">AR PLAYGROUND / 01</span></header>
+<div class="workspace"><section class="stage" id="stage" aria-label="摄像头互动区域"><video id="video" autoplay muted playsinline></video><canvas id="canvas"></canvas><div class="stage-top"><span class="live" id="mode">等待开启</span><span class="local">画面仅在本机处理</span></div>
+<div class="welcome" id="welcome"><span class="eyebrow">LET YOUR EXPRESSION TAKE OVER</span><h1>给你的笑容，<br>一点天气。</h1><p>微笑，落下一场雨。<br>大笑，让烟花在你身边绽放。</p><button class="primary" id="start">开启摄像头 <span>↗</span></button><button class="text-button" id="demo">先试试特效</button><p class="privacy">无需登录 · 不录制 · 不上传摄像头画面</p></div>
+<div class="stage-bottom"><span id="hint" role="status" aria-live="polite">准备好，用表情改变天气。</span><button id="stop" class="glass" hidden>关闭摄像头</button></div></section>
+<aside><div class="panel-head"><span class="eyebrow">YOUR EXPRESSION, LIVE</span><h2>笑容就是开关</h2><p>正对镜头，保持面部光线充足。</p></div>
+<div class="reaction" id="rain-card"><span class="symbol">☂</span><div><h3>微笑 · 下雨</h3><p>嘴角扬起，雨滴轻轻落下</p></div><span class="number">01</span></div>
+<div class="reaction" id="fire-card"><span class="symbol">✳</span><div><h3>大笑 · 烟花</h3><p>露出笑容并张嘴，触发绽放</p></div><span class="number">02</span></div>
+<div class="reaction"><span class="symbol">◌</span><div><h3>摇摇头 · 碰一碰</h3><p>用头部弹开落下的烟花粒子</p></div><span class="number">03</span></div>
+<div class="readings"><div class="state-line"><span>当前表情</span><strong id="expression">尚未识别</strong></div><label class="meter-label">笑容强度 <output id="smile-value">0%</output></label><progress id="smile-meter" max="1" value="0"></progress><label class="meter-label">张嘴程度 <output id="jaw-value">0%</output></label><progress id="jaw-meter" max="1" value="0"></progress></div>
+<div class="settings"><label for="sensitivity">触发灵敏度 <output id="sensitivity-value">标准</output></label><input type="range" id="sensitivity" min="0" max="100" value="50"><div class="range-labels"><span>更克制</span><span>更灵敏</span></div><label class="check"><input type="checkbox" id="outline" checked> 显示头部碰撞轮廓</label></div>
+<div id="demo-controls" hidden><p class="demo-note">手动演示 · 拖动轮廓模拟头部</p><div class="demo-buttons"><button id="manual-rain">微笑下雨</button><button id="manual-fire">大笑烟花</button></div><button class="text-button" id="real-camera">切换摄像头体验</button></div>
+<div class="stats"><span><b id="fps">—</b> FPS</span><span><b id="latency">—</b> ms 推理</span><span><b id="particles">0</b> 粒子</span></div></aside></div>
+<footer><span>微笑，让世界回应你。</span><span>摄像头 AR 实验 · 二维头部碰撞</span></footer></main><script type="module" src="./app.mjs"></script></body></html>
