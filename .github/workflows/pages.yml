@@ -1,0 +1,42 @@
+name: Publish Expression Weather
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: github-pages
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v6
+      - name: Restore pinned face model and runtime
+        run: python3 download_assets.py
+      - name: Verify expression and collision logic
+        run: node test.mjs
+      - name: Prepare website files
+        run: |
+          mkdir -p _site
+          cp index.html style.css app.mjs core.mjs face-worker.js _site/
+          cp -R vendor _site/vendor
+          touch _site/.nojekyll
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v4
+        with:
+          path: _site
+      - name: Publish website
+        id: deployment
+        uses: actions/deploy-pages@v4
