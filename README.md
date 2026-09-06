@@ -2,7 +2,7 @@
 
 摄像头微笑下雨、大笑触发烟花；烟花粒子与跟随头部位置、尺寸和倾斜角的二维椭圆发生反弹。原生 JavaScript + Canvas 2D + MediaPipe Face Landmarker 0.10.21，无框架、无服务端推理。
 
-在线演示：https://expression-weather-ar.taegen.chatgpt.site
+在线演示：https://taigen2457.github.io/expression-weather-ar/
 
 公开源码：https://github.com/Taigen2457/expression-weather-ar
 
